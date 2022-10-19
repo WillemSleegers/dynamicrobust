@@ -105,11 +105,11 @@ cfaHB <- function(model,n=NULL,plot=FALSE,manual=FALSE,reps=500){
   #Exclamation point is how we indicate if manual = T (because default is F)
 
   if(!manual){
-    fitted <- round(lavaan::fitmeasures(model,c("chisq","df","pvalue","srmr","rmsea","cfi")),3)
+    fitted <- round(lavaan::fitmeasures(model,c("chisq.scaled","df.scaled","pvalue.scaled","srmr","rmsea.robust","cfi.scaled")),3)
     fitted_m <- as.matrix(fitted)
     fitted_t <- t(fitted_m)
     fitted_t <- as.data.frame(fitted_t)
-    colnames(fitted_t) <- c("Chi-Square"," df","p-value","  SRMR","  RMSEA","   CFI")
+    colnames(fitted_t) <- c("Chi-Square (scaled)"," df (scaled)","p-value (scaled)","  SRMR","  RMSEA (robust)","   CFI (scaled)")
     rownames(fitted_t) <- c("")
     res$fit <- fitted_t
   }
